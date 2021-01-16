@@ -1,0 +1,47 @@
+package sort;
+
+public class Select {
+
+	public static void main(String[] args) {
+		
+		int[] arr = {5,4,3,1};
+		int i  = 0; // 비교데이터 인덱스
+		int lowest = 0; // 최솟값
+		int swap = 0;
+		for( i = 0; i < arr.length; i++) {
+			lowest = arr[i];
+			for(int j = i+1; j < arr.length; j++) {
+				System.out.println(j);
+				if(lowest > arr[j]) {
+					swap = arr[i];
+					arr[i] = arr[j];
+					arr[j] = swap;
+				}
+			}
+			
+		}
+		
+		
+		for(int k = 0; k < arr.length; k++) {
+			System.out.print(arr[k]);
+		}
+		
+	}
+
+}
+/*
+	비교데이터 인덱스      비교시작 인덱스   비교끝 인덱스
+	            
+	 0           				 1                  3
+     1            				 2                  3 
+     2            				 3                  3
+     
+     5,4,3,1
+     
+     1,4,3,5
+     
+     
+     
+     
+     
+*/

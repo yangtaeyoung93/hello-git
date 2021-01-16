@@ -1,0 +1,56 @@
+package recursive_call;
+
+import java.io.IOException;
+import java.util.Scanner;
+
+/*
+ * func()
+ 	정수 num에 대해 
+ 	num이 홀수 - > 3 * num + 1
+ 	num이 짝수 -> num / 2
+ 	이렇게 진행하여 n이 결국 1이 될때까지 2와 3의 과정을 반복
+ */
+
+
+/*
+ * func2()
+ 	정수 num에 대해 
+ 1,2,3의 조합으로 나타낼 수 있는 방법의 총 수
+ */
+
+public class RecursiveCall {
+	public static void main(String[] args)  {
+		 Scanner sc = new Scanner(System.in);
+		int num =sc.nextInt();
+		//func(num);
+		System.out.println(func2(num));
+		
+		
+		
+		
+		
+		
+		
+	}
+	private static int func2(int num) {
+		if(num == 1) {
+			return 1;
+		}else if(num == 2) {
+			return 2;
+		}else if(num == 3) {
+			return 4;
+		}else {
+			return func2(num - 1) + func2(num - 2) + func2(num - 3);
+		}
+	}
+	private static int func(int num) {
+		System.out.println(num);
+		if(num == 1) {
+			return 1;
+		}else if(num % 2 == 1 ) {
+			return func((3*num)+1);
+		}else {
+			return func(num / 2);
+		}
+	}
+}
