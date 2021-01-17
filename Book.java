@@ -1,33 +1,27 @@
-package array;
+package arrayTest;
 
 public class Book {
 	
-	private String title, author;
+	private String name;
+	private String author;
 	
-	public Book() {}
-
-	public Book(String title, String author) {
-		this.title = title;
-		this.author = author;
+	
+	public String getName() {
+		return name;
 	}
-
-	public String getTilte() {
-		return title;
+	public void setName(String name) {
+		this.name = name;
 	}
-
-	public void setTilte(String tilte) {
-		this.title = tilte;
-	}
-
 	public String getAuthor() {
 		return author;
 	}
-
 	public void setAuthor(String author) {
 		this.author = author;
 	}
 	
-	public void showBookInfo() {
-		System.out.println(title + "," + author);
+	public void showBookInfo(){
+		System.out.println(name + "," + author);
 	}
+	
+	
 }

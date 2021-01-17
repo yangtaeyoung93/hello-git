@@ -1,33 +1,49 @@
-package array;
+package arrayTest;
 
 import java.util.ArrayList;
 
 public class Student {
+
+	private int studentId;
+	private String studentNm;
+	ArrayList<Book> list;
 	
-	int studentID;
-	String studentName; 
-	ArrayList<Subject> subjectList;
-	
-	
-	public Student(int studentID, String studentName) {
+	public Student(int studentId, String studentNm) {
 		super();
-		this.studentID = studentID;
-		this.studentName = studentName;
-		
-		subjectList = new ArrayList<>();
+		this.studentId = studentId;
+		this.studentNm = studentNm;
+		list = new ArrayList<>();
+	}
+
+	public int getStudentId() {
+		return studentId;
+	}
+
+	public void setStudentId(int studentId) {
+		this.studentId = studentId;
+	}
+
+	public String getStudentNm() {
+		return studentNm;
+	}
+
+	public void setStudentNm(String studentNm) {
+		this.studentNm = studentNm;
 	}
 	
-	public void addSubject(String name, int score) {
-		Subject subject  = new Subject(name, score);
-		subjectList.add(subject);
-	}
-	public void showStudentInfo() {
-		int total = 0;
+	public void addBookList(String name, String author) {
 		
-		for (Subject subject : subjectList) {
-			total += subject.getScore();
-			System.out.println(studentName + "학생의" + subject.getName() + "과목의 성적은 " + subject.getScore() + "점 입니다.");
+		Book book = new Book();
+		book.setAuthor(author);
+		book.setName(name);
+		list.add(book);
+	}
+	public void showInfo() {
+		System.out.print(studentNm + "학생이 읽은 책은 " );
+		for (int i = 0; i < list.size(); i++) {
+			System.out.print(list.get(i).getName() + " ,");
 		}
-		System.out.println(studentName + "학생의"  + "총 점은 " +total + "점 입니다.");
+		System.out.println("입니다.");
+		
 	}
 }
