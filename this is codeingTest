@@ -1,0 +1,27 @@
+package ndb;
+
+import java.util.*;
+public class Main {
+	static String[] vector;
+	public static void main(String[] args) {
+		Main T = new Main();
+		Scanner sc = new Scanner(System.in);
+		String n =sc.next();
+		int[][] board = new int[9][9];
+		int count = 0;
+		int x = 0 , y=0;
+			x = n.charAt(0) - 96;
+			y = n.charAt(1) -48;
+		int[] dx = {2, 2 , -2 , -2 , 1 , 1, -1, -1};
+		int[] dy = {1, -1 , 1 , -1 , 2 , -2, -2, 2};
+		for(int i=0; i<8; i++) {
+			int nx = x + dx[i];
+			int ny = y + dy[i];
+			if(nx > 0 && nx < 9 && ny > 0 && ny < 9 && board[nx][ny] == 0) {
+				board[nx][ny] = 1;
+				count++;
+			}
+		}
+		System.out.println(count);
+	}
+}
