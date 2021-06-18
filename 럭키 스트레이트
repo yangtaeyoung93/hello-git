@@ -1,0 +1,27 @@
+import java.util.*;
+public class Main {
+	public String solution(String num) {
+		String answer = "READY";
+		int left = 0;
+		int right = 0;
+		for(int i=0; i<num.length(); i++) {
+			int mid = num.length()/2;
+			if(mid<i+1) {
+				left += num.charAt(i)-48;
+			}else {
+				right += num.charAt(i)-48;
+			}
+		}
+		if(left == right) {
+			answer = "LUCKY";
+		}
+		return answer;
+	}
+	public static void main(String[] args) {
+		Main T = new Main();
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+		String num = Integer.toString(n);
+		System.out.println(T.solution(num));
+	}
+}
