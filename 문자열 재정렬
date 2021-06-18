@@ -1,0 +1,24 @@
+import java.util.*;
+public class Main {
+	public String solution(String n) {
+		String answer = "";
+		int tmp = 0;
+		char[] c = n.toCharArray();
+		Arrays.sort(c);
+		for(char x : c) {
+			if(Character.isDigit(x)) {
+				 tmp += x-48;
+			}else {
+				answer+=x;
+			}
+		}
+		answer += Integer.toString(tmp);
+		return answer;
+	}
+	public static void main(String[] args) {
+		Main T = new Main();
+		Scanner sc = new Scanner(System.in);
+		String n = sc.nextLine();
+		System.out.println(T.solution(n));
+	}
+}
