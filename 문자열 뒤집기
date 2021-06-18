@@ -1,9 +1,14 @@
 import java.util.*;
 public class Main {
 	public int solution(String n) {
-		int answer0 = 0; // 1로 바꾸는 경우
-		int answer1 = 0; // 0로 바꾸는 경우
+		int answer0 = 0; // 0으로 바꾸는 경우
+		int answer1 = 0; // 1로 바꾸는 경우
 		char[] c = n.toCharArray();
+		if(c[0] == '0') {
+			answer1++;
+		}else {
+			answer0++;
+		}
 		for(int i=0; i<c.length-1; i++) {
 			if(c[i]!=c[i+1]) {
 				if(c[i+1] == '1') {
