@@ -1,0 +1,35 @@
+import java.util.*;
+class Test{
+	public int time,score;
+	public Test( int score,int time) {
+		this.score = score;
+		this.time = time;
+	}
+}
+class Main {
+	static ArrayList<Test> arr;
+	static int n,m,answer=Integer.MIN_VALUE;
+	public void DFS(int L,int ts,int tt, ArrayList<Test> arr) {
+		if(tt>m) return;
+		if(L == n) {
+			answer = Math.max(answer, ts);
+		}else {
+				DFS(L+1,ts+arr.get(L).score,tt+arr.get(L).time,arr);
+				DFS(L+1,ts,tt,arr);
+		}
+	}
+	public static void main(String[] args){
+		Main T = new Main();
+		Scanner kb = new Scanner(System.in);
+		n = kb.nextInt();
+		m = kb.nextInt();
+		arr = new ArrayList<>();
+		for(int i=0;i<n; i++) {
+			int a = kb.nextInt();
+			int b = kb.nextInt();
+			arr.add(new Test(a, b));
+		}
+		T.DFS(0,0,0,arr);
+		System.out.println(answer);
+	}
+}
