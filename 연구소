@@ -1,0 +1,72 @@
+import java.util.*;
+public class Main {
+	static int n,m;
+	static int[] dis,ch;
+	static int[][] arr,tmp;
+	static int answer = Integer.MIN_VALUE;
+	public void DFS(int L) {
+		if(L == 3) {
+			for(int i=0; i<n; i++) {
+				for(int j=0; j<m;j++) {
+					tmp[i][j] = arr[i][j];
+				}
+			}
+			for(int i=0; i<n; i++) {
+				for(int j=0; j<m; j++) {
+					if(tmp[i][j] == 2) {
+						solution(i, j);
+					}
+				}
+			}
+			int score = 0;
+			for(int i=0; i<n; i++) {
+				for(int j=0; j<m; j++) {
+					if(tmp[i][j] == 0) {
+						score++;
+					}
+				}
+			}
+			answer = Math.max(answer, score);
+		}else {
+			for(int i=0; i<n; i++) {
+				for(int j=0; j<m; j++) {
+					if(arr[i][j] == 0) {
+						arr[i][j] = 1;
+						DFS(L+1);
+						arr[i][j] = 0;
+					}
+				}
+			}
+		}
+	}
+	int[] dx = {-1,0,1,0};
+	int[] dy = {0,1,0,-1};
+	public void solution(int x, int y) {
+		for(int i=0; i<4; i++) {
+			int nx = x + dx[i];
+			int ny = y + dy[i];
+			if(nx >=0 && nx < n && ny >= 0 && ny < m && tmp[nx][ny] == 0) {
+				tmp[nx][ny] = 2;
+				solution(nx, ny);
+			}
+		}
+	}
+	public static void main(String[] args) {
+		Main T = new Main();
+		Scanner sc = new Scanner(System.in);
+		 n = sc.nextInt();
+		 m = sc.nextInt();
+		 dis = new int[n+1];
+		 ch = new int[n+1];
+		 arr = new int[n][m];
+		 tmp = new int[n][m];
+		 for(int i=0; i<n; i++) {
+			 for(int j=0; j<m; j++) {
+				 arr[i][j] = sc.nextInt();
+			 }
+		 }
+		 T.DFS(0);
+		 System.out.println(answer);
+		 
+	}
+}
