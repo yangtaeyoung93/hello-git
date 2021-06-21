@@ -1,0 +1,48 @@
+import java.util.*;
+class Point{
+	public int x,y;
+	Point(int x, int y){
+		this.x = x;
+		this.y = y;
+	}
+}
+class Main {
+	static int n,m;
+	static int[] dx= {1,1,1,0,0,-1,-1,-1};
+	static int[] dy= {0,1,-1,1,-1,0,1,-1};
+	static int answer = 0;
+	public void DFS(int x,int y,int[][] arr) {
+		for(int j=0; j<8;j++) {
+			int nx = x + dx[j];
+			int ny = y + dy[j];
+			if(nx >=0 && nx <n && ny >= 0 && ny < n && arr[nx][ny] == 1) {
+				arr[nx][ny] = 0;
+				DFS(nx,ny,arr);
+			}
+		}
+	}
+	public void solution(int[][] arr) {
+		for(int i=0; i<n; i++) {
+			for(int j=0; j<n; j++) {
+				if(arr[i][j] == 1) {
+					answer++;
+					arr[i][j] = 0;
+					DFS(i,j,arr);
+				}
+			}
+		}
+	}
+	public static void main(String[] args){
+		Main T = new Main();
+		Scanner kb = new Scanner(System.in);
+		n = kb.nextInt();
+		int [][] arr = new int[n][n];
+		for(int i=0;i<n;i++) {
+			for(int j=0;j<n;j++) {
+				arr[i][j] = kb.nextInt();
+			}
+		}
+		T.solution(arr);
+		System.out.println(answer);
+	}
+}
