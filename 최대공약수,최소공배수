@@ -1,0 +1,17 @@
+class Solution {
+    int gcd = 0;
+    public void GCD(int n, int m){
+        if(n%m == 0){
+            gcd = m;
+        }else{
+            GCD(m,n%m);
+        }
+    }
+    public int[] solution(int n, int m) {
+
+        GCD(n,m);
+        int lcm = (n*m)/gcd;
+         int[] answer = {gcd,lcm};
+        return answer;
+    }
+}
