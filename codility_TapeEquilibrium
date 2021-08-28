@@ -1,0 +1,31 @@
+class Solution {
+    public int solution(int[] A) {
+        int N = A.length;
+        int[] dp = new int[N-1];
+        dp[0] = A[0];
+        if(N>2){
+            dp[1] = dp[0] + A[1];
+        }
+        
+        int total = 0;
+        for(int i=0; i<N; i++){
+            total += A[i];
+        }
+        for(int i=2; i<N; i++){
+            dp[i-1] = dp[i-2] + A[i-1];
+        }
+      //  System.out.println(dp[2]);
+        int ans = Integer.MAX_VALUE;
+        for(int i=0; i<N-1; i++){
+        
+            int res = Math.abs((2*dp[i])-total);
+            
+            if(ans > res ){
+                ans = res;
+            }
+        }
+       
+
+        return ans;
+    }
+}
